@@ -224,6 +224,26 @@ td:last-child,th:last-child{text-align:right;white-space:nowrap}
 .role h3{font-size:1.15rem;margin-bottom:.3rem}
 .role p{font-size:.96rem;color:var(--muted);margin:0}
 
+
+/* docentes */
+.dochead{display:flex;flex-wrap:wrap;gap:1.5rem 2.5rem;align-items:end;justify-content:space-between;margin-bottom:1.5rem}
+.dochead .head{flex:1 1 420px}
+.docstats{display:flex;gap:2rem}
+.docstats b{font-family:var(--display);font-weight:900;font-variation-settings:"wdth" 70;font-size:2.6rem;line-height:1;display:block;color:var(--green)}
+.docstats span{font-size:.9rem;color:var(--muted)}
+.tbar{display:flex;height:10px;border-radius:99px;overflow:hidden;margin:.6rem 0 0;width:min(320px,100%)}
+.docs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:.9rem;margin-top:1.25rem}
+.doc{display:grid;grid-template-columns:52px minmax(0,1fr);gap:.9rem;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:1rem 1.1rem}
+.doc .av{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-variation-settings:"wdth" 80;font-size:1.1rem;background:var(--nuE);color:var(--green)}
+.doc.M .av{background:var(--nuC);color:var(--nuCb)}
+.doc h3{font-size:1.08rem;font-variation-settings:"wdth" 88;margin-bottom:.35rem}
+.doc .tt{font-weight:700;font-size:.93rem;line-height:1.35}
+.doc .tt small{display:block;font-weight:500;color:var(--muted);font-size:.85rem}
+.doc .gr{font-size:.86rem;color:var(--muted);margin-top:.45rem;line-height:1.35}
+.doc .co{display:inline-block;background:var(--sun);color:#3a2b00;font-weight:800;font-size:.72rem;border-radius:6px;padding:.1rem .45rem;margin-bottom:.4rem}
+.doc[hidden]{display:none}
+.docempty{color:var(--muted);margin-top:1rem}
+
 /* support */
 .support{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
 details.acc{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:0}
@@ -265,6 +285,7 @@ footer{padding:2.5rem 0 3rem;font-size:.9rem;color:var(--muted)}
       <a href="#projetos">Projetos integradores</a>
       <a href="#formacao">TCC e atividades</a>
       <a href="#carreira">Carreira</a>
+      <a href="#professores">Professores</a>
       <a href="#apoio">Apoio</a>
       <a href="#contato">Contato</a>
     </nav>
@@ -497,6 +518,37 @@ footer{padding:2.5rem 0 3rem;font-size:.9rem;color:var(--muted)}
   </div>
 </section>
 
+
+<section class="block" id="professores">
+  <div class="wrap">
+    <div class="dochead">
+      <div class="head" style="margin:0">
+        <h2>Quem dá aula no curso</h2>
+        <p class="lede">Um corpo docente que reúne Computação, Matemática, Administração, Direito, Educação e Linguagens, refletindo a formação ampla do curso.</p>
+      </div>
+      <div>
+        <div class="docstats">
+          <div><b>18</b><span>professores</span></div>
+          <div><b>11</b><span>doutores</span></div>
+          <div><b>7</b><span>mestres</span></div>
+        </div>
+        <div class="tbar" role="img" aria-label="11 doutores e 7 mestres"><span style="flex:11;background:var(--leaf)"></span><span style="flex:7;background:var(--nuCb)"></span></div>
+      </div>
+    </div>
+    <div class="tools">
+      <div class="search"><label class="sr" for="dq">Buscar professor ou área</label><input id="dq" type="search" placeholder="Buscar por nome, área ou instituição" autocomplete="off"></div>
+      <div class="chips" role="group" aria-label="Filtrar professores" id="dchips">
+        <button class="chip" type="button" data-l="" aria-pressed="true">Todos</button>
+        <button class="chip" type="button" data-l="D" aria-pressed="false">Doutores</button>
+        <button class="chip" type="button" data-l="M" aria-pressed="false">Mestres</button>
+        <button class="chip" type="button" data-l="comp" aria-pressed="false">Formação em Computação</button>
+      </div>
+    </div>
+    <div class="docs" id="docs"></div>
+    <p class="docempty" id="dempty" hidden>Nenhum professor encontrado com esse filtro.</p>
+  </div>
+</section>
+
 <section class="block" id="apoio">
   <div class="wrap">
     <div class="head">
@@ -703,6 +755,24 @@ qf.addEventListener('change',()=>{
   if(g.length) tip+='<p class="fine" style="margin-top:.75rem">Autodeclaração e condição de deficiência passam por verificação (heteroidentificação ou análise documental), conforme o edital.</p>';
   qres.innerHTML=`<strong>Você pode concorrer em:</strong><ul>${L.map(x=>`<li>${x}</li>`).join('')}</ul>${tip}`;
 });
+
+
+/* docentes */
+const DOCS = [{"n": "Alexssandro Queiroz Lencina", "g": "Licenciado em Matemática", "l": "D", "t": "Doutor em Modelagem Matemática", "i": "UNIJUÍ"}, {"n": "Aline Adams", "g": "Bacharel em Direito", "l": "D", "t": "Doutora em Direito", "i": "URI"}, {"n": "Artênio Bernardo Rabuske", "g": "Bacharel em Administração de Empresas", "l": "M", "t": "Mestre em Extensão Rural", "i": "UFSM"}, {"n": "Bruno Siqueira da Silva", "g": "Bacharel em Sistemas de Informação e Licenciado em Matemática", "l": "D", "t": "Doutor em Ciência da Computação", "i": "UFPel"}, {"n": "Carla Tatiana Zappe", "g": "Licenciada em Educação Especial, Libras", "l": "M", "t": "Mestre em Educação", "i": "UFSM"}, {"n": "Cesar Augusto de Deus", "g": "Bacharel em Ciências da Computação", "l": "M", "t": "Mestre em Educação Profissional e Tecnológica", "i": "IFFar"}, {"n": "Claiton Marques Correa", "g": "Bacharel em Sistemas de Informação", "l": "D", "t": "Doutor em Ciência da Computação", "i": "PUCRS"}, {"n": "Daniel Fernandes da Silva", "g": "Licenciado em Matemática", "l": "D", "t": "Doutor em Educação", "i": "USP"}, {"n": "Fernando Luis de Oliveira", "g": "Tecnólogo em Análise e Desenvolvimento de Sistemas", "l": "D", "t": "Doutor em Ciência da Computação", "i": "UFPel"}, {"n": "Frank Jonis Flores de Almeida", "g": "Ciências do 1º Grau, Licenciado em Matemática Plena (URCAMP)", "l": "M", "t": "Mestre nas Ciências da Modelagem Matemática", "i": "UNIJUÍ"}, {"n": "Ícaro Iglesias", "g": "Bacharel em Sistemas de Informação", "l": "M", "t": "Mestre em Educação", "i": "ESE, IPP (Porto, Portugal)"}, {"n": "Jairo Oliveira", "g": "Licenciado em Língua Inglesa", "l": "M", "t": "Mestre em Ensino de Línguas", "i": "UNIJUÍ"}, {"n": "Luciéli Tolfo Beque Guerra", "g": "Bacharel em Sistemas de Informação", "l": "M", "t": "Mestre em Computação", "i": "UFRGS"}, {"n": "Odair Menuzzi", "g": "Licenciado em Matemática", "l": "D", "t": "Doutor em Engenharia Mecânica", "i": "UFRGS"}, {"n": "Paulo Ricardo Barbieri Dutra Lima", "g": "Bacharel em Sistemas de Informação", "l": "D", "t": "Doutor em Ciência da Computação", "i": "UFPel"}, {"n": "Rafael Baldiati Parizi", "g": "Bacharel em Ciência da Computação", "l": "D", "t": "Doutor em Ciência da Computação", "i": "PUCRS"}, {"n": "Sabrine Amaral Martins", "g": "Licenciatura em Letras", "l": "D", "t": "Doutora em Letras", "i": "PUCRS", "x": "Pós-doutorado em Letras, Unisc"}, {"n": "Thiago Luiz de Oliveira Cabral", "g": "Bacharel em Administração", "l": "D", "t": "Doutor em Administração", "i": "UFSC"}];
+const dwrap=document.getElementById('docs');
+const ini=n=>{const p=n.split(' ').filter(w=>w.length>2);return (p[0][0]+p[p.length-1][0]).toUpperCase()};
+DOCS.forEach(d=>{
+  const el=document.createElement('article');el.className='doc '+d.l;
+  const coord=d.n.startsWith('Claiton');
+  el.innerHTML=`<div class="av" aria-hidden="true">${ini(d.n)}</div><div>${coord?'<span class="co">Coordenador do curso</span>':''}<h3>${d.n}</h3><div class="tt">${d.t}<small>${d.i}${d.x?'<br>'+d.x:''}</small></div><div class="gr">Graduação: ${d.g}</div></div>`;
+  el.dataset.s=norm(d.n+' '+d.t+' '+d.i+' '+d.g+' '+(d.x||''));
+  el.dataset.l=d.l; el.dataset.c=/computa|sistemas/i.test(d.t+' '+d.g)?'1':'';
+  dwrap.appendChild(el);
+});
+let dl='',dterm='';
+function dapply(){let n=0;dwrap.querySelectorAll('.doc').forEach(el=>{const okL=!dl||(dl==='comp'?el.dataset.c:el.dataset.l===dl);el.hidden=!(okL&&(!dterm||el.dataset.s.includes(dterm)));if(!el.hidden)n++});document.getElementById('dempty').hidden=n>0}
+document.querySelectorAll('#dchips .chip').forEach(c=>c.onclick=()=>{dl=c.dataset.l;document.querySelectorAll('#dchips .chip').forEach(x=>x.setAttribute('aria-pressed',x===c));dapply()});
+document.getElementById('dq').addEventListener('input',e=>{dterm=norm(e.target.value.trim());dapply()});
 
 /* copy + theme + nav */
 document.getElementById('copy').onclick=async e=>{
