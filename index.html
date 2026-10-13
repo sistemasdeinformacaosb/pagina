@@ -244,6 +244,55 @@ td:last-child,th:last-child{text-align:right;white-space:nowrap}
 .doc[hidden]{display:none}
 .docempty{color:var(--muted);margin-top:1rem}
 
+
+/* desafio */
+.quest{background:linear-gradient(120deg,var(--green),var(--leaf));color:#fff;border-radius:22px;padding:clamp(1.25rem,3vw,1.75rem) clamp(1.25rem,4vw,2.25rem);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem 2rem}
+:root[data-theme="dark"] .quest{color:#0B1426}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .quest{color:#0B1426}}
+.quest h3{font-size:clamp(1.4rem,3vw,1.9rem);font-variation-settings:"wdth" 75;font-weight:800}
+.quest p{margin:.3rem 0 0;opacity:.92}
+.quest .qprog{font-weight:700;font-size:.9rem;opacity:.9;margin-top:.5rem}
+.qbtn{background:var(--sun);color:#3a2b00;border:0;border-radius:12px;padding:.85rem 1.3rem;font:inherit;font-weight:800;cursor:pointer;display:inline-flex;gap:.5rem;align-items:center}
+.qbtn:hover{filter:brightness(1.06)}
+.qbtn svg{width:20px;height:20px}
+.qfab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:35;box-shadow:0 10px 30px -10px rgba(0,0,0,.45);border-radius:999px;padding:.75rem 1.1rem}
+.qfab[hidden]{display:none}
+.qmodal{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:1rem;padding-top:calc(1rem + env(safe-area-inset-top,0px));padding-bottom:calc(1rem + env(safe-area-inset-bottom,0px));background:rgba(5,12,30,.55);opacity:0;pointer-events:none;transition:opacity .25s}
+.qmodal.on{opacity:1;pointer-events:auto}
+.qbox{background:var(--surface);color:var(--ink);border-radius:22px;width:min(520px,100%);max-height:100%;overflow-y:auto;padding:1.5rem;position:relative;transform:translateY(12px) scale(.98);transition:transform .25s}
+.qmodal.on .qbox{transform:none}
+.qbox .x{position:absolute;top:1rem;right:1rem;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:10px;width:38px;height:38px;cursor:pointer;font-size:1.2rem}
+.qsteps{display:flex;gap:.4rem;margin:0 3rem 1.25rem 0}
+.qsteps i{flex:1;height:8px;border-radius:99px;background:var(--line)}
+.qsteps i.done{background:var(--leaf)}
+.qsteps i.now{background:var(--sun)}
+.qnum{font-size:.88rem;color:var(--muted);font-weight:700}
+.qbox h3{font-size:1.35rem;margin:.3rem 0 1rem;font-variation-settings:"wdth" 88;line-height:1.2}
+.qrow{display:flex;gap:.5rem}
+.qrow input{flex:1;min-width:0;padding:.8rem 1rem;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:inherit}
+.qrow button{flex:none}
+.qfb{min-height:1.6rem;margin:.6rem 0 0;font-weight:700;font-size:.95rem}
+.qfb.no{color:#C2410C}
+.qfb.yes{color:var(--leaf)}
+.qhelp{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem}
+.qhint{background:var(--bg);border:1px dashed var(--line);border-radius:12px;padding:.75rem 1rem;font-size:.94rem;margin-top:.75rem}
+.shake{animation:shake .35s}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.prize{text-align:center}
+.prize .key{width:84px;height:84px;margin:.5rem auto 0;display:block;color:var(--sun)}
+.prize h3{font-size:1.8rem;margin:.5rem 0}
+.ticket{border:2px dashed var(--green);border-radius:16px;padding:1rem;margin:1rem 0;background:var(--bg)}
+.ticket .code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:1.6rem;font-weight:800;letter-spacing:.08em;color:var(--green)}
+.ticket .nm{font-family:var(--display);font-size:1.35rem;font-weight:800;font-variation-settings:"wdth" 80}
+.ticket small{display:block;color:var(--muted)}
+.toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--ink);color:var(--bg);padding:.8rem 1.2rem;border-radius:14px;font-weight:700;z-index:70;opacity:0;transition:.3s;pointer-events:none;max-width:calc(100% - 2rem);text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.confetti{position:fixed;inset:0;pointer-events:none;z-index:65;overflow:hidden}
+.confetti i{position:absolute;top:-12px;width:9px;height:14px;border-radius:2px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(105vh) rotate(720deg)}}
+.crest img{cursor:pointer;transition:transform .15s}
+.crest img:active{transform:scale(.94)}
+
 /* support */
 .support{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
 details.acc{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:0}
@@ -318,6 +367,20 @@ footer{padding:2.5rem 0 3rem;font-size:.9rem;color:var(--muted)}
         <figcaption><span>Cada bloco é uma disciplina, na altura da sua carga horária.</span><span>Amarelo: projetos com a comunidade</span></figcaption>
       </figure>
     </a>
+  </div>
+</section>
+
+
+<section style="padding:0 0 3rem" aria-labelledby="qtitle">
+  <div class="wrap">
+    <div class="quest">
+      <div>
+        <h3 id="qtitle">Desafio SI: ganhe um chaveiro do curso</h3>
+        <p>Explore o site, responda 5 perguntas e retire seu brinde na coordenação.</p>
+        <div class="qprog" id="qprog"></div>
+      </div>
+      <button class="qbtn" type="button" data-qopen><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7.5" cy="15.5" r="4.5"/><path d="M10.7 12.3 20 3m-3 3 2.5 2.5M14.5 8.5l2 2"/></svg><span id="qbtnlabel">Começar o desafio</span></button>
+    </div>
   </div>
 </section>
 
@@ -609,6 +672,17 @@ footer{padding:2.5rem 0 3rem;font-size:.9rem;color:var(--muted)}
   <p>Conteúdo baseado no Projeto Pedagógico do Curso de Bacharelado em Sistemas de Informação do IFFar Campus São Borja (atos: Resolução Consup nº 35/2013, nº 170/2014 e nº 80/2022; reconhecimento pela Portaria MEC nº 652/2017). Informações de ingresso e cotas conferem com o processo seletivo 2026 e podem mudar: consulte sempre o edital vigente.</p>
 </div></footer>
 
+
+<!-- Ei, você que abriu o código-fonte: isso é pensar como quem programa! A palavra secreta do Desafio SI é ALGORITMO. -->
+<button class="qbtn qfab" type="button" data-qopen id="qfab" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7.5" cy="15.5" r="4.5"/><path d="M10.7 12.3 20 3m-3 3 2.5 2.5M14.5 8.5l2 2"/></svg><span>Desafio</span></button>
+<div class="qmodal" id="qmodal" aria-hidden="true">
+  <div class="qbox" role="dialog" aria-modal="true" aria-labelledby="qh">
+    <button class="x" type="button" id="qclose" aria-label="Fechar desafio">×</button>
+    <div id="qbody"></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
 <div class="scrim" id="scrim"></div>
 <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dtitle" aria-hidden="true">
   <div class="dh"><h3 id="dtitle"></h3><button class="x" id="dclose" aria-label="Fechar">×</button></div>
@@ -773,6 +847,90 @@ let dl='',dterm='';
 function dapply(){let n=0;dwrap.querySelectorAll('.doc').forEach(el=>{const okL=!dl||(dl==='comp'?el.dataset.c:el.dataset.l===dl);el.hidden=!(okL&&(!dterm||el.dataset.s.includes(dterm)));if(!el.hidden)n++});document.getElementById('dempty').hidden=n>0}
 document.querySelectorAll('#dchips .chip').forEach(c=>c.onclick=()=>{dl=c.dataset.l;document.querySelectorAll('#dchips .chip').forEach(x=>x.setAttribute('aria-pressed',x===c));dapply()});
 document.getElementById('dq').addEventListener('input',e=>{dterm=norm(e.target.value.trim());dapply()});
+
+
+/* desafio */
+(function(){
+const QS = [{"q": "Para cursar Inteligência Artificial, qual disciplina você precisa ter concluído antes?", "tip": "Abra o mapa do currículo e toque em Inteligência Artificial, no 6º semestre.", "go": "#curriculo", "k": "txt", "h": ["c4d40ff359695e5b3a2c2177778a341768b7995769a70e12dd2492d8d2f1ec9a", "367e6d199ac5f53a246f3efd779d8c96b9b90525e9bbe615b75d953ff87421d3"]}, {"q": "Em qual semestre a turma constrói e apresenta sua solução para a comunidade, no Projeto Integrador III?", "tip": "Veja a seção Projetos Integradores.", "go": "#projetos", "k": "num", "h": ["fdfa2f58cbcab94c6496c85f5fda309cb7d948389a7492d62eca581cd4be901d"]}, {"q": "Quantos professores do curso têm doutorado?", "tip": "Confira os números no topo da seção Professores.", "go": "#professores", "k": "num", "h": ["90a089e6f07ed01e67f3508698babd18d86e3b6134c089c16f60983436b8592a"]}, {"q": "Quantas vagas o curso oferece por ano?", "tip": "Está logo no começo da página.", "go": "#inicio", "k": "num", "h": ["a80ea9a89a485bcf83ff7daa4c87b8661db77d945e9716cfad392cc92f08f20b"]}, {"q": "Desafio final: encontre a palavra secreta escondida no site.", "tip": "Quem programa sabe que nem tudo está à vista. Toque 5 vezes no logo do curso, lá no início da página. No computador, também dá para procurar no console do navegador (tecla F12).", "go": "#inicio", "k": "txt", "h": ["5b7369bbd14405c68e56e45b50ac42de964b03817faacba87c704b3eaa0c3f1d"]}];
+const SALT='si-iffar-sb:';
+const KEY=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7.5" cy="15.5" r="4.5"/><path d="M10.7 12.3 20 3m-3 3 2.5 2.5M14.5 8.5l2 2"/></svg>`;
+const words={um:1,primeiro:1,dois:2,segundo:2,tres:3,terceiro:3,quatro:4,quarto:4,cinco:5,quinto:5,seis:6,sexto:6,sete:7,setimo:7,oito:8,oitavo:8,nove:9,dez:10,onze:11,doze:12,trinta:30};
+const clean=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+function canon(v,k){
+  v=clean(v);
+  if(k==='num'){const d=v.match(/\d+/);if(d)return String(+d[0]);const w=v.match(/[a-z]+/g)||[];for(const x of w)if(words[x])return String(words[x]);return v.replace(/[^a-z0-9]/g,'')}
+  return v.replace(/[^a-z0-9]/g,'');
+}
+async function sha(s){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
+let st={step:0,name:'',code:'',when:''};
+try{const s=JSON.parse(localStorage.getItem('si-desafio')||'null');if(s)st=Object.assign(st,s)}catch(_){}
+const save=()=>{try{localStorage.setItem('si-desafio',JSON.stringify(st))}catch(_){}};
+const modal=document.getElementById('qmodal'),body=document.getElementById('qbody'),fab=document.getElementById('qfab');
+let lastF=null;
+function label(){
+  const done=st.step>=QS.length;
+  document.getElementById('qbtnlabel').textContent= st.code?'Ver meu comprovante':done?'Gerar comprovante':st.step?'Continuar o desafio':'Começar o desafio';
+  document.getElementById('qprog').textContent= st.code?'Desafio concluído!':st.step?`Progresso: ${st.step} de ${QS.length} respostas certas`:'';
+}
+function steps(){return '<div class="qsteps" aria-hidden="true">'+QS.map((_,i)=>`<i class="${i<st.step?'done':i===st.step?'now':''}"></i>`).join('')+'</div>'}
+function render(){
+  if(st.code) return renderPrize();
+  if(st.step>=QS.length) return renderName();
+  const q=QS[st.step];
+  body.innerHTML=steps()+`<div class="qnum">Pergunta ${st.step+1} de ${QS.length}</div><h3 id="qh">${q.q}</h3>
+   <form class="qrow" id="qf"><label class="sr" for="qa">Sua resposta</label><input id="qa" autocomplete="off" placeholder="Digite sua resposta" ${q.k==='num'?'inputmode="numeric"':''}><button class="btn primary" type="submit">Verificar</button></form>
+   <p class="qfb" id="qfb" aria-live="polite"></p>
+   <div class="qhelp"><button class="chip" type="button" id="qtip">Preciso de uma dica</button><button class="chip" type="button" id="qgo">Ir até a parte do site</button></div><div id="qhintbox"></div>`;
+  const inp=document.getElementById('qa');
+  setTimeout(()=>inp.focus(),50);
+  document.getElementById('qtip').onclick=()=>{document.getElementById('qhintbox').innerHTML=`<div class="qhint">${q.tip}</div>`};
+  document.getElementById('qgo').onclick=()=>{close();toast('Procure a resposta e volte pelo botão Desafio');document.querySelector(q.go).scrollIntoView({behavior:'smooth'})};
+  document.getElementById('qf').onsubmit=async e=>{
+    e.preventDefault();const fb=document.getElementById('qfb');
+    const v=canon(inp.value,q.k); if(!v){fb.className='qfb no';fb.textContent='Escreva uma resposta primeiro.';return}
+    const h=await sha(SALT+v);
+    if(q.h.includes(h)){fb.className='qfb yes';fb.textContent='Acertou!';st.step++;save();label();setTimeout(render,650)}
+    else{fb.className='qfb no';fb.textContent='Ainda não. Tente de novo ou peça uma dica.';const f=document.getElementById('qf');f.classList.remove('shake');void f.offsetWidth;f.classList.add('shake')}
+  };
+}
+function renderName(){
+  body.innerHTML=steps()+`<div class="prize"><span class="key">${KEY}</span><h3 id="qh">Você completou o desafio!</h3><p>Digite seu nome para gerar o comprovante de retirada do chaveiro.</p></div>
+   <form class="qrow" id="qn"><label class="sr" for="qname">Seu nome</label><input id="qname" autocomplete="name" placeholder="Seu nome completo" required minlength="3"><button class="btn primary" type="submit">Gerar</button></form>`;
+  setTimeout(()=>document.getElementById('qname').focus(),50);
+  document.getElementById('qn').onsubmit=async e=>{
+    e.preventDefault();const n=document.getElementById('qname').value.trim().replace(/\s+/g,' ');if(n.length<3)return;
+    const now=new Date();const h=(await sha(SALT+n.toLowerCase()+now.toISOString().slice(0,10))).toUpperCase();
+    st.name=n;st.code='SI-'+h.slice(0,4)+'-'+h.slice(4,8);st.when=now.toLocaleString('pt-BR',{dateStyle:'short',timeStyle:'short'});save();label();renderPrize();confetti();
+  };
+}
+function renderPrize(){
+  body.innerHTML=`<div class="prize"><span class="key">${KEY}</span><h3 id="qh">Parabéns!</h3><p>Seu chaveiro está garantido. Mostre esta tela na coordenação do curso de Sistemas de Informação, no IFFar Campus São Borja.</p>
+   <div class="ticket"><div class="nm">${st.name.replace(/[<>&]/g,'')}</div><div class="code">${st.code}</div><small>Desafio SI concluído em ${st.when}</small></div>
+   <p class="fine">Um chaveiro por pessoa, enquanto durar o estoque.</p></div>`;
+}
+function open(){lastF=document.activeElement;render();modal.classList.add('on');modal.setAttribute('aria-hidden','false')}
+function close(){modal.classList.remove('on');modal.setAttribute('aria-hidden','true');if(lastF&&lastF.focus)lastF.focus()}
+document.querySelectorAll('[data-qopen]').forEach(b=>b.addEventListener('click',open));
+document.getElementById('qclose').onclick=close;
+modal.addEventListener('click',e=>{if(e.target===modal)close()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('on'))close()});
+/* mostra o botão flutuante depois que a faixa do desafio sai da tela */
+const band=document.getElementById('qtitle').closest('section');
+new IntersectionObserver(([en])=>{fab.hidden=en.isIntersecting||en.boundingClientRect.top>0}).observe(band);
+/* toast */
+let tt;function toast(m){const el=document.getElementById('toast');el.textContent=m;el.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>el.classList.remove('on'),3800)}
+/* easter egg: 5 toques no logo */
+let taps=0,tw;const logo=document.querySelector('.crest img');
+if(logo){logo.addEventListener('click',e=>{e.preventDefault();taps++;clearTimeout(tw);tw=setTimeout(()=>taps=0,1500);if(taps>=5){taps=0;toast('Você encontrou! A palavra secreta é ALGORITMO')}})}
+console.log('%cDesafio SI','font-size:18px;font-weight:bold;color:#2F6FDB','\nOlhar o console é coisa de quem programa! A palavra secreta é ALGORITMO.');
+function confetti(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const c=document.createElement('div');c.className='confetti';const cols=['#2F6FDB','#E9B019','#6B5CA5','#0B3D91','#5B93F0'];
+  for(let i=0;i<90;i++){const p=document.createElement('i');p.style.left=Math.random()*100+'vw';p.style.background=cols[i%cols.length];p.style.animationDuration=(1.8+Math.random()*1.8)+'s';p.style.animationDelay=Math.random()*.6+'s';c.appendChild(p)}
+  document.body.appendChild(c);setTimeout(()=>c.remove(),4500);
+}
+label();
+})();
 
 /* copy + theme + nav */
 document.getElementById('copy').onclick=async e=>{
